@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Painter</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Pixel Painter</h1>
+    <div class="left-panel">
+        <h4>Brush color:</h4>
+        <input type="color" id="brush-color" onchange="clickColor(0, -1, -1, 5)" value="#000000" style="width:150px;">
+        <h4>Background Color:</h4>
+        <input type="color" id="background-color" onchange="clickColor(0, -1, -1, 5)" value="#FFFFFF" style="width:150px;">
+        <h4>Mode:</h4>
+       <select name="mode" id="mode">
+            <option value="Paint" selected>Paint</option>
+            <option value="Hover">Hover</option>
+        </select>
+        <div class="grid-text">
+        <h4>Grid-size: <span id="grid-size">16x16</span></h4>
+        </div>
+        <input type="range" min="5" max="100" value="16" class="slider" id="grid-slider">
+        <button>Toggle Grid</button>
+        <button>Clear Canvas</button>
+    </div>
+    <div class="canvas">
+
+    </div>
+
+
+</body>
+</html>
