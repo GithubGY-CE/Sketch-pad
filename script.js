@@ -1,16 +1,14 @@
 
-document.addEventListener("DOMContentLoaded", function() {
-    const slider = document.getElementById("grid-slider");
-    const output = document.getElementById("grid-size");
-    createGrid(slider.value);
+const slider = document.getElementById("grid-slider");
+const output = document.getElementById("grid-size");
+createGrid(slider.value);
    
-    slider.oninput = function() {
-        output.innerHTML = `${this.value}x${this.value}`;
+slider.oninput = function() {
+    output.innerHTML = `${this.value}x${this.value}`;
 
-        document.querySelector(".canvas").replaceChildren();
-        createGrid(this.value);
-    }
-})
+    document.querySelector(".canvas").replaceChildren();
+    createGrid(this.value);
+}
 
 function createGrid(gridSize) { 
     for(x = 0; x < gridSize; x++) {
