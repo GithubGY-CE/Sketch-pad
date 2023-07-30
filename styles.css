@@ -2,6 +2,24 @@
     display: flex;
     flex-direction: column;
     max-width: 150px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 80px;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    margin: 50px;
+}
+
+.body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .canvas{
@@ -11,22 +29,42 @@
     display: flex;
     flex-direction: row;
     padding: 2px;
+    align-self: center;
 }
 
 .cell {
     box-sizing: border-box;
-    border-top: 1px solid gray;
-    border-right: 1px solid gray;
+    border-top: 1px solid rgb(173, 168, 168);
+    border-right: 1px solid rgb(173, 168, 168);
     height: 50px;
     width: 50px;
 }
 
 .cell-left {
     box-sizing: border-box;
-    border-left: 1px solid gray;
+    border-left: 1px solid rgb(173, 168, 168);
 }
 
 .cell-bottom {
     box-sizing: border-box;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid rgb(173, 168, 168);
 }
+
+.toggle-grid, .clear, .grid-slider {
+    margin: 15px;
+    padding: 10px;
+    width: 120px;
+}
+
+.cell:hover {
+    background-color: rgb(112, 112, 106);
+}
+
+#mode {
+    text-align: center;
+}
+
+#toggle-grid {
+    text-align: center;
+}
+
