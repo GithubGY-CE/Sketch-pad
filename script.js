@@ -83,6 +83,7 @@ function createGrid(gridSize) {
             cell.style.width = `${cellDimension}px`;
             cell.setAttribute("draggable", "false");
             cell.style.backgroundColor = backgroundColor;
+            cell.setAttribute("ondragstart", "return false");
 
             if (x === 0) {
                 cell.classList.add("cell-left");
