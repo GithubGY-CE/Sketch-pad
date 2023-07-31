@@ -51,29 +51,46 @@ function changeMode() {
     togglePen("Off");
     const canvasCell = document.querySelectorAll(".cell");
     const tipText = document.querySelector(".tooltipText");
+    canvasCell.forEach(cell => cell.addEventListener("mousedown", paintCell));
 
     if (selectedMode.value === "Paint") {
         canvasCell.forEach(cell => cell.removeEventListener("mousedown", togglePen));
-        
         canvasCell.forEach(cell => cell.addEventListener("mouseover", paintMousedown));
-        canvasCell.forEach(cell => cell.addEventListener("mousedown", paintCell));
-
         tipText.textContent = "Click on the canvas to paint.";
     } else {
         canvasCell.forEach(cell => cell.removeEventListener("mouseover", paintMousedown));
-
         canvasCell.forEach(cell => cell.addEventListener("mousedown", togglePen));
-        canvasCell.forEach(cell => cell.addEventListener("mousedown", paintCell));
-
         tipText.textContent = "Click on the canvas to activate the hover brush. Click again to disable."
     }
 }
 
+//paints the cell if the mouse button is held down
 function paintMousedown(e) {
     if (e.buttons == 1 || e.buttons == 3) {
         paintCell(e);
     }
 }
+
+//paints the cell on mouseover
+function togglePen(state) {
+    const canvasCell = document.querySelectorAll(".cell");
+    if (state === "Off" || penOn) {
+        canvasCell.forEach(cell => cell.removeEventListener("mouseover", paintCell));
+        penOn = false;
+    } else if (!penOn) {
+        canvasCell.forEach(cell => cell.addEventListener("mouseover", paintCell));
+        penOn = true;
+    } 
+}
+
+function paintCell(e) {
+    let brushColor = document.getElementById("brush-color").value;
+
+    if (eraserOn) {
+        brushColor = document.getElementById("background-color").value;
+    }
+    e.target.style.background = brushColor;
+}   
 
 function resetGrid() {
     document.querySelector(".canvas").replaceChildren();
@@ -103,7 +120,6 @@ function createGrid(gridSize) {
 
             cell.style.height = `${cellDimension}px`;
             cell.style.width = `${cellDimension}px`;
-            cell.setAttribute("draggable", "false");
             cell.style.backgroundColor = backgroundColor;
             cell.setAttribute("ondragstart", "return false");
 
@@ -117,26 +133,5 @@ function createGrid(gridSize) {
         }
     }
 }
-
-function togglePen(state) {
-    const canvasCell = document.querySelectorAll(".cell");
-    if (state === "Off" || penOn) {
-        canvasCell.forEach(cell => cell.removeEventListener("mouseover", paintCell));
-        penOn = false;
-    } else if (!penOn) {
-        canvasCell.forEach(cell => cell.addEventListener("mouseover", paintCell));
-        penOn = true;
-    } 
-}
-
-function paintCell(e) {
-    let brushColor = document.getElementById("brush-color").value;
-
-    if (eraserOn) {
-        brushColor = document.getElementById("background-color").value;
-    }
-    e.target.style.background = brushColor;
-}   
-
 
 
