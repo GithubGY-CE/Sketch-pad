@@ -74,6 +74,14 @@ h1 {
     cursor: pointer;
 }
 
+#mode {
+    width: 80px;
+}
+
+#toggle-grid {
+    width: 50px;
+}
+
 #grid-size {
     font-weight: normal;
 }
@@ -83,11 +91,11 @@ h1 {
     background-color: rgb(180, 117, 117);
     color: white;
     font-weight: bold;
-    width: 80px;
+    width: 100px;
     height: 30px;
-    border: 1px solid white;
+    border: 1.5px solid black;
     text-justify: center;
-    padding: 0px
+    padding: 0px;
 }
 
 .tooltip {
