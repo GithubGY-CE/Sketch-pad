@@ -10,30 +10,44 @@
 </head>
 
 <body>
-    <h1>Pixel Painter</h1>
+
     <div class="body">
-        <div class="left-panel">
-            <h4>Mode:</h4>
-            <select name="mode" id="mode" style="width:120px;">
-                <option value="Paint" selected title="Click on the canvas to paint.">Paint</option>
-                <option value="Hover" title="Click on the canvas to activate the hover brush. Click again to disable.">Hover</option>
-            </select>
-            <h4>Brush color:</h4>
-            <input type="color" id="brush-color" value="#000000"
-                style="width:120px;">
-            <h4>Background Color:</h4>
-            <input type="color" id="background-color" value="#FFFFFF"
-                style="width:120px;">
-            <div class="grid-text">
-                <h4>Grid-size: <span id="grid-size">16x16</span></h4>
+        <div class="panel-container">
+            <h1>Pixel Painter</h1>
+            <div class="left-panel">
+
+                <h4>Mode:</h4>
+
+                <div class="mode-container">
+                    <select name="mode" id="mode">
+                        <option value="Paint" selected>Paint</option>
+                        <option value="Hover">Hover
+                        </option>
+                    </select>
+
+                    <div class="tooltip">i
+                        <span class="tooltiptext"></span>
+                    </div>
+                </div>
+
+                <h4>Brush color:</h4>
+                <input type="color" id="brush-color" value="#000000">
+
+                <h4>Background Color:</h4>
+                <input type="color" id="background-color" value="#FFFFFF">
+
+                <div class="grid-text">
+                    <h4>Grid-size: <span id="grid-size">16x16</span></h4>
+                </div>
+                <input type="range" min="5" max="50" value="16" class="slider" id="grid-slider">
+                <h4>Grid:</h4>
+                <select name="grid" id="toggle-grid">
+                    <option value="On" selected>On</option>
+                    <option value="Off">Off</option>
+                </select>
+
+                <button class="clear">Clear</button>
             </div>
-            <input type="range" min="5" max="50" value="16" class="slider" id="grid-slider">
-            <h4>Grid:</h4>
-            <select name="grid" id="toggle-grid" style="width:120px;">
-                <option value="On" selected>On</option>
-                <option value="Off">Off</option>
-            </select>
-            <button class="clear">Clear Canvas</button>
         </div>
         <div class="canvas">
 

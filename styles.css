@@ -1,3 +1,7 @@
+html {
+    background-color: rgb(239, 235, 245);
+}
+
 .left-panel {
     display: flex;
     flex-direction: column;
@@ -5,13 +9,16 @@
     border: 1px solid;
     border-radius: 5px;
     padding: 15px;
-    margin: 80px;
+    margin: 50px;
     align-items: center;
+    background-color: rgb(202, 192, 218);
+    box-shadow: 3.5px 5px gray;
 }
 
 h1 {
     text-align: center;
     margin: 50px;
+    text-shadow: 2px 2px gray;
 }
 
 .body {
@@ -19,7 +26,7 @@ h1 {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    
+    margin-top: 100px;
 }
 
 .canvas{
@@ -30,6 +37,7 @@ h1 {
     flex-direction: row;
     padding: 2px;
     align-self: center;
+    margin:80px;
 }
 
 .cell {
@@ -50,7 +58,7 @@ h1 {
     border-bottom: 1px solid rgb(173, 168, 168);
 }
 
-.toggle-grid, .clear, .grid-slider {
+ .clear, .grid-slider {
     margin: 15px;
     padding: 10px;
     width: 120px;
@@ -60,11 +68,61 @@ h1 {
     background-color: rgb(112, 112, 106);
 }
 
-#mode {
+#mode, #toggle-grid, .clear {
     text-align: center;
+    border-radius: 5px;
 }
 
-#toggle-grid {
-    text-align: center;
+#grid-size {
+    font-weight: normal;
 }
 
+.clear {
+    margin-top: 30px;
+    background-color: rgb(180, 117, 117);
+    color: white;
+    font-weight: bold;
+    width: 90px;
+    height: 40px
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    font-size: 13px;
+    background-color: rgb(47, 86, 131);
+    color: white;
+    font-weight: bold;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 105%;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  .mode-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }

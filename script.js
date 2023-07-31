@@ -32,20 +32,24 @@ function toggleGrid() {
 }
 
 function changeMode() {
+    togglePen("Off");
     const canvasCell = document.querySelectorAll(".cell");
+    const tipText = document.querySelector(".tooltiptext");
 
     if (selectedMode.value === "Paint") {
-        togglePen("Off");
-        canvasCell.forEach(cell => cell.removeEventListener("click", togglePen));
+        canvasCell.forEach(cell => cell.removeEventListener("mousedown", togglePen));
         
         canvasCell.forEach(cell => cell.addEventListener("mouseover", paintMousedown));
         canvasCell.forEach(cell => cell.addEventListener("mousedown", paintCell));
+
+        tipText.textContent = "Click on the canvas to paint.";
     } else {
-        togglePen("Off");
         canvasCell.forEach(cell => cell.removeEventListener("mouseover", paintMousedown));
 
-        canvasCell.forEach(cell => cell.addEventListener("click", togglePen));
+        canvasCell.forEach(cell => cell.addEventListener("mousedown", togglePen));
         canvasCell.forEach(cell => cell.addEventListener("mousedown", paintCell));
+
+        tipText.textContent = "Click on the canvas to activate the hover brush. Click again to disable."
     }
 }
 
