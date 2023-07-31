@@ -7,6 +7,7 @@
     <title>Pixel Painter</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -18,7 +19,7 @@
 
                 <h4>Mode:</h4>
 
-                <div class="mode-container">
+                <div class="row-container">
                     <select name="mode" id="mode">
                         <option value="Paint" selected>Paint</option>
                         <option value="Hover">Hover
@@ -26,12 +27,15 @@
                     </select>
 
                     <div class="tooltip">i
-                        <span class="tooltiptext"></span>
+                        <span class="tooltipText"></span>
                     </div>
                 </div>
 
-                <h4>Brush color:</h4>
-                <input type="color" id="brush-color" value="#000000">
+                <h4>Brush:</h4>
+                <div class="row-container">
+                    <input type="color" id="brush-color" value="#000000">
+                    <button style="font-size:24px" class="eraser" title="Eraser"><i class="fa fa-eraser" style="font-size:20px;"></i></button>
+                </div>
 
                 <h4>Background Color:</h4>
                 <input type="color" id="background-color" value="#FFFFFF">
@@ -39,7 +43,7 @@
                 <div class="grid-text">
                     <h4>Grid-size: <span id="grid-size">16x16</span></h4>
                 </div>
-                <input type="range" min="5" max="50" value="16" class="slider" id="grid-slider">
+                <input type="range" min="5" max="100" value="16" class="slider" id="grid-slider">
                 <h4>Grid:</h4>
                 <select name="grid" id="toggle-grid">
                     <option value="On" selected>On</option>

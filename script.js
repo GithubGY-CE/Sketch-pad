@@ -1,4 +1,5 @@
 let penOn = false;
+let eraserOn = false;
 
 window.onload = () => {
     resetGrid();
@@ -9,7 +10,8 @@ const selectedMode = document.getElementById("mode");
 selectedMode.oninput = changeMode;
 
 const slider = document.getElementById("grid-slider");
-slider.oninput = resetGrid;
+slider.onchange = resetGrid;
+slider.oninput = changeSliderText;
 
 const clearButton = document.querySelector(".clear");
 clearButton.onclick = resetGrid;
@@ -18,7 +20,21 @@ const grid = document.getElementById("toggle-grid");
 grid.oninput = toggleGrid;
 
 const backgroundColor = document.getElementById("background-color");
-backgroundColor.oninput = resetGrid;
+backgroundColor.onchange = resetGrid;
+
+const eraser = document.querySelector(".eraser");
+eraser.onclick = toggleEraser;
+
+function toggleEraser() {
+    togglePen("Off");
+    if (eraserOn) {
+        eraser.classList.remove("eraser-on");
+        eraserOn = false;
+    } else {
+        eraser.classList.add("eraser-on");
+        eraserOn =  true;
+    }
+}
 
 function toggleGrid() {
     
@@ -34,7 +50,7 @@ function toggleGrid() {
 function changeMode() {
     togglePen("Off");
     const canvasCell = document.querySelectorAll(".cell");
-    const tipText = document.querySelector(".tooltiptext");
+    const tipText = document.querySelector(".tooltipText");
 
     if (selectedMode.value === "Paint") {
         canvasCell.forEach(cell => cell.removeEventListener("mousedown", togglePen));
@@ -60,13 +76,15 @@ function paintMousedown(e) {
 }
 
 function resetGrid() {
-    const output = document.getElementById("grid-size");
-    output.innerHTML = `${slider.value}x${slider.value}`;
-
     document.querySelector(".canvas").replaceChildren();
     createGrid(slider.value);
     toggleGrid();
     changeMode();
+}
+
+function changeSliderText() {
+    const output = document.getElementById("grid-size");
+    output.innerHTML = `${slider.value}x${slider.value}`;
 }
 
 function createGrid(gridSize) {
@@ -102,20 +120,21 @@ function createGrid(gridSize) {
 
 function togglePen(state) {
     const canvasCell = document.querySelectorAll(".cell");
-    if (state === "Off") {
+    if (state === "Off" || penOn) {
         canvasCell.forEach(cell => cell.removeEventListener("mouseover", paintCell));
         penOn = false;
     } else if (!penOn) {
         canvasCell.forEach(cell => cell.addEventListener("mouseover", paintCell));
         penOn = true;
-    } else {
-        canvasCell.forEach(cell => cell.removeEventListener("mouseover", paintCell));
-        penOn = false;
-    }
+    } 
 }
 
 function paintCell(e) {
-    const brushColor = document.getElementById("brush-color").value;
+    let brushColor = document.getElementById("brush-color").value;
+
+    if (eraserOn) {
+        brushColor = document.getElementById("background-color").value;
+    }
     e.target.style.background = brushColor;
 }   
 
